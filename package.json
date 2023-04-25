@@ -1,5 +1,5 @@
 {
-  "name": "gz",
+  "name": "gz-command",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,5 +12,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.16.0"
+  }
 }
