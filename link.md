@@ -35,3 +35,21 @@ yarn unlink B
 - 删除B的链接，在B项目中
 
 yarn unlink
+
+- yarn 对bin的link不友好
+
+
+
+### pnpm link
+
+  `pnpm` 不存在创建一个链接，如果要B项目引用A。直接去B项目执行
+  `pnpm link ../..` (`../..`为 A 项目的地址，会自动引入到目标项目)
+
+  在B项目卸载A依赖时，执行`pnpm unlink` （依然有问题，bin里面的文件没有卸载）
+
+  `pnpm link --global` 不加路径就是把当前的项目弄到全局，加了就是把路径下的弄到全局。其他可以通过`pnpm link --global <pkg>`引用
+
+
+
+
+
