@@ -1,18 +1,18 @@
 
 console.log('gz - nodejs - command')
 
-
-console.log(process.argv)
+const userFileRelativePath = process.argv[2]
+console.log(`userFileRelativePath: `, userFileRelativePath)
 
 import { createRequire } from 'node:module';
+import { resolve } from "node:path";
 
-console.log(import.meta.url)
-
-// const require = createRequire(import.meta.url);
+const userFileAbsolutePath = resolve(userFileRelativePath)
+console.log(`userFileAbsolutePath: `, userFileAbsolutePath)
+/**
+ * createRequire的参数是一个路径，返回基于此路径的require函数。后面在调用require就是基于createRequire的路径
+ */
+const require = createRequire(userFileAbsolutePath);
 
 // sibling-module.js is a CommonJS module.
-// const siblingModule = require('./sibling-module');
-
-
-
-export const a = 1
+const siblingModule = require(userFileRelativePath);
