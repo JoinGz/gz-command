@@ -8,12 +8,13 @@
     "gz": "./bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^18.16.0"
+    "@types/node": "^18.16.0",
+    "vitest": "^0.31.0"
   }
 }

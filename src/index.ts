@@ -1,12 +1,13 @@
+import { createRequire } from 'node:module';
+import { resolve } from "node:path";
+import "./global.js"
 
 console.log('gz - nodejs - command')
 
 const userFileRelativePath = process.argv[2]
 console.log(`userFileRelativePath: `, userFileRelativePath)
 
-import { createRequire } from 'node:module';
-import { resolve } from "node:path";
-import "./global.js"
+
 
 const userFileAbsolutePath = resolve(userFileRelativePath)
 console.log(`userFileAbsolutePath: `, userFileAbsolutePath)
