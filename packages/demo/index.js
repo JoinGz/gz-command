@@ -3,3 +3,4 @@ console.log(`demo, 需要执行的文件`);
 
 
 $`cat package.json`;
+$`ls -lh`;
