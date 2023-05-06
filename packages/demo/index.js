@@ -2,5 +2,9 @@
 console.log(`demo, 需要执行的文件`);
 
 
-$`cat package.json`;
-$`ls -lh`;
+( async ()=>{
+  const result = await $`cat package.json`;
+  console.log(result)
+  $`ls -lh`;
+
+})()
