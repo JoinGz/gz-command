@@ -6,7 +6,7 @@
   "configurations": [
     {
       "command": "npm run test ${fileBasename}",
-      "name": "Run npm start",
+      "name": "Run npm test",
       "request": "launch",
       "type": "node-terminal"
     },

@@ -13,6 +13,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@types/which": "^3.0.0",
+    "which": "^3.0.0"
+  },
   "devDependencies": {
     "@types/node": "^18.16.0",
     "vitest": "^0.31.0"
