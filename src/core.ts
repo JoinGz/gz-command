@@ -16,13 +16,22 @@ try {
 
 export async function $(command: TemplateStringsArray, ...values: string[]) {
   return new Promise((r, j) => {
-    console.log(`command`, command)
-    console.log(`values`, values)
-    const commandStr = command[0]
+    function passthru(literals: TemplateStringsArray, vals: string[]) {
+      let output = "";
+      let index;
+      for (index = 0; index < vals.length; index++) {
+        output += literals[index] + (vals[index] ? `'${vals[index]}'` : '');
+      }
+      output += literals[index]
+      return output;
+    }
+    const commandStr = passthru(command, values)
 
     let result: Array<Uint8Array> = []
     let size = 0
-    const cmd = `${defaultOptions.preFix} ${commandStr} '${values[0]}'`
+    const cmd = `${defaultOptions.preFix} ${commandStr}`
+
+    console.log(`cmd`, cmd)
     const ls = spawn(cmd, {
       shell: defaultOptions.shell,
       stdio: ['inherit', 'pipe', 'pipe'],
