@@ -1,6 +1,7 @@
 import { createRequire } from 'node:module';
 import { resolve } from "node:path";
 import "./global.js"
+import { pathToFileURL } from 'node:url';
 
 console.log('gz - nodejs - command')
 
@@ -8,7 +9,7 @@ const userFileRelativePath = process.argv[2]
 console.log(`userFileRelativePath: `, userFileRelativePath)
 
 
-
+console.log(`cwd:`, process.cwd())
 const userFileAbsolutePath = resolve(userFileRelativePath)
 console.log(`userFileAbsolutePath: `, userFileAbsolutePath)
 /**
@@ -17,6 +18,15 @@ console.log(`userFileAbsolutePath: `, userFileAbsolutePath)
 const require = createRequire(userFileAbsolutePath);
 
 // sibling-module.js is a CommonJS module.
-const siblingModule = require(userFileRelativePath);
+// const siblingModule = require(userFileRelativePath);
+
+await (async () => {
+  await import(pathToFileURL(userFileRelativePath).toString())
+})().catch((e) => {
+  console.log(`gz_catch`, e)
+  process.exitCode = 1
+})
+
+
 
 

@@ -45,11 +45,14 @@ export async function $(command: TemplateStringsArray, ...values: string[]) {
 
     ls.stderr.on('data', (data) => {
       log({ data, type: 'stderr' })
-      j('翻车')
     })
-
+    
     ls.on('close', (code) => {
-      r(Buffer.concat(result, size).toString())
+      const msg = Buffer.concat(result, size).toString()
+      if (code !== 0) {
+        j('翻车')
+      }
+      r(msg)
       console.log(`child process exited with code ${code}`)
     })
   })
